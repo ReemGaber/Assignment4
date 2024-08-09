@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+.maincolor
+{
+    color: #0aad0a;
+}
+
+.cursor-pointer
+{
+    cursor: pointer;
+}
+.mainbgcolor
+{
+    background-color:#0aad0a ;
+}
+
+.te:hover
+{
+    background-color:#0aad0a ;
+}
+
+.btn:disabled {
+    color: white; 
+    background-color: #0aad0a;
+    cursor: not-allowed;
+}

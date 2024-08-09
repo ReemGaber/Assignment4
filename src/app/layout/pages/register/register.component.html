@@ -1,0 +1,122 @@
+<div class="w-75 my-3 mx-auto">
+    <h3 class="maincolor">Register Now</h3>
+
+    @if(errormsg)
+    {
+        <h4 class="alert alert-danger">{{errormsg}}</h4>
+    }
+
+    <form [formGroup]="registerform" (ngSubmit)="RegisterSubmit()">
+        <div class="my-3">
+            <label>Name:</label>
+            <input formControlName="name" class="form-control">
+
+            @if(registerform.get('name')?.errors && registerform.get('name')?.touched)
+            {
+                <div class=" alert alert-danger w-50 p-1">
+
+                    @if(registerform.get('name')?.errors?.['required'])
+                    {
+                        <p>Name is required</p>
+                    }
+                    @else if(registerform.get('name')?.errors?.['minlength'])
+                    {
+                        <p>Name should be more than 3 characters</p>
+                    }
+                    @else if(registerform.get('name')?.errors?.['maxlength'])
+                    {
+                        <p>Name should be less than 20 characters</p>
+                    }
+                </div>
+            }
+           
+        </div>
+        <div class="my-3">
+            <label>Email:</label>
+            <input formControlName="email" class="form-control">
+            @if(registerform.get('email')?.errors && registerform.get('email')?.touched)
+            {
+                <div class=" alert alert-danger w-50 p-1">
+
+                    @if(registerform.get('email')?.errors?.['required'])
+                    {
+                        <p>Email is required</p>
+                    }
+                    @else if(registerform.get('email')?.errors?.['email'])
+                    {
+                        <p>Please Enter Valid Email</p>
+                    }
+                </div>
+            }
+        </div>
+        <div class="my-3">
+            <label>Phone:</label>
+            <input formControlName="phone" class="form-control">
+            @if(registerform.get('phone')?.errors && registerform.get('phone')?.touched)
+            {
+                <div class=" alert alert-danger w-50 p-1">
+
+                    @if(registerform.get('phone')?.errors?.['required'])
+                    {
+                        <p>Phone is required</p>
+                    }
+                    @else if(registerform.get('phone')?.errors?.['pattern'])
+                    {
+                        <p>Please Enter Valid phone</p>
+                    }
+                </div>
+            }
+            
+        </div>
+        <div class="my-3">
+            <label>Password:</label>
+            <input formControlName="password" class="form-control">
+            @if(registerform.get('password')?.errors && registerform.get('password')?.touched)
+            {
+                <div class=" alert alert-danger w-50 p-1">
+
+                    @if(registerform.get('password')?.errors?.['required'])
+                    {
+                        <p>password is required</p>
+                    }
+                    @else if(registerform.get('password')?.errors?.['pattern'])
+                    {
+                        <p>Please Enter Valid password</p>
+                    }
+                </div>
+            }
+        </div>
+        <div class="my-3">
+            <label>RePassword:</label>
+            <input formControlName="rePassword" class="form-control">
+            @if(registerform.get('rePassword')?.errors && registerform.get('rePassword')?.touched)
+            {
+                <div class=" alert alert-danger w-50 p-1">
+
+                    @if(registerform.get('rePassword')?.errors?.['required'])
+                    {
+                        <p>rePassword is required</p>
+                    }
+                    @else if(registerform.get('rePassword')?.errors?.['pattern'])
+                    {
+                        <p>Please Enter Valid rePassword</p>
+                    }
+                </div>
+            }
+        </div>
+
+        @if(registerform.errors){
+            <div class="alert alert-danger">
+                <p>Passwords Not Matched</p>
+            </div>
+        }
+
+        <button [disabled]="registerform.invalid" type="submit" class="btn text-white d-block ms-auto mainbgcolor te">Register
+
+            @if(isloading)
+            {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+            }
+        </button>
+    </form>
+</div>
