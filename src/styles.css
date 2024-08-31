@@ -1,6 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .maincolor
 {
     color: #0aad0a;
+}
+.rating-color
+{
+    color: #ffc908;
 }
 
 .cursor-pointer
@@ -10,6 +18,19 @@
 .mainbgcolor
 {
     background-color:#0aad0a ;
+}
+
+.product button 
+{
+    transition: transform 1s , opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.product:hover button 
+{
+    opacity: 1;
+    transform: translateY(0%);
+
 }
 
 .te:hover

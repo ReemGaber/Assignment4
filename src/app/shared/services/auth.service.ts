@@ -44,8 +44,24 @@ export class AuthService {
 
       console.log(this.decoded.getValue())
     }
-
-     
   }
+
+  SendEmailVerify(data:object):Observable<any>
+  {
+    return this._HttpClient.post(`${Environment.baseUrl}/api/v1/auth/forgotPasswords`,data)
+  }
+
+  sendCodeverify(data:object):Observable<any>
+  {
+    return this._HttpClient.post(`${Environment.baseUrl}/api/v1/auth/verifyResetCode`,data)
+  }
+
+  ResetPassword(data:object):Observable<any>
+  {
+    return this._HttpClient.put(`${Environment.baseUrl}/api/v1/auth/resetPassword`,data)
+  }
+
+
+  
 }
  

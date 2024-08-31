@@ -46,12 +46,20 @@
             }
         </div>
 
-        <button [disabled]="loginform.invalid" type="submit" class="btn text-white d-block ms-auto mainbgcolor te">Login
+        <div class="d-flex justify-content-end gap-3 align-items-center">
+            <a class="cursor-pointer text-primary text-decoration-none" routerLink="/forgetpassword">Forget Password</a>
+
+        <button [disabled]="loginform.invalid" type="submit" class="btn text-white mainbgcolor te">Login
 
             @if(isloading)
             {
                 <i class="fa-solid fa-spinner fa-spin"></i>
             }
         </button>
+        </div>
     </form>
+
+    
 </div>
+
+

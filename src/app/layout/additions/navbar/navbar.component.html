@@ -1,41 +1,47 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" href="#">
+<nav class="bg-slate-100 py-4">
+  <div class="container text-center mx-auto 2xl:w-11/12 flex flex-col lg:flex-row lg:justify-between">
+    <div class="gap-3 flex flex-col items-center lg:flex-row ">
         <img src="assets/images/freshcart-logo.svg">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse d-flex justify-content-between navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-         @if(islogin)
+        <ul class="flex flex-col gap-1 lg:flex-row lg:gap-3">
+          @if(islogin)
          {
-          <a class="nav-link" routerLink="home">Home</a>
-          <a class="nav-link" routerLink="cart">Cart</a>
-          <a class="nav-link" routerLink="products">products</a>
-          <a class="nav-link" routerLink="categories">Categories</a>
-          <a class="nav-link" routerLink="brands">Brands</a>
+          <a class="nav-link" routerLink="home">{{'Home' |translate}}</a>
+          <a class="nav-link" routerLink="cart">{{'Cart' |translate}}</a>
+          <a class="nav-link" routerLink="products">{{'Products' | translate}}</a>
+          <a class="nav-link" routerLink="categories">{{'Category'| translate}}</a>
+          <a class="nav-link" routerLink="brands">{{'Brands' |translate}}</a>
          }
-        </div>
+        </ul>
+      </div>
+      <div class="gap-3 items-center  flex flex-col lg:flex-row">
+        <ul class="gap-3 flex flex-col lg:flex-row lg:order-1">
+          @if(!islogin)
+          {
+           <li><a routerLink="login">{{'Login' |translate}}</a></li> 
+             <li><a routerLink="register">{{'Register' |translate}}</a></li>
+          }
+          <li><a class="cursor-pointer" (click)="Chnagelang('en')" >En</a></li>
+          <li><a class="cursor-pointer" (click)="Chnagelang('ar')" >Ar</a></li>
+          @if(islogin)
+          {
+            <li><a routerLink="cart">
+              <i class="fa-solid fa-cart-shopping maincolor cursor-pointer"></i>
+            </a></li>
+           <li><a (click)="Logout()" class="nav-link cursor-pointer">{{'Logout' |translate}}</a></li>
+
+          }
+        </ul>
+
+
         <div class="d-flex gap-3 align-items-center">
           <i class="fa-brands fa-facebook cursor-pointer"></i>
           <i class="fa-brands fa-twitter cursor-pointer"></i>
           <i class="fa-brands fa-instagram cursor-pointer"></i>
           <i class="fa-brands fa-youtube cursor-pointer"></i>
           <i class="fa-brands fa-linkedin cursor-pointer"></i>
-
-          @if(!islogin)
-          {
-            <a class="nav-link" routerLink="login">Login</a>
-             <a class="nav-link" routerLink="register">Register</a>
-          }
-            @if(islogin)
-            {
-              <a (click)="Logout()" class="nav-link cursor-pointer">Logout</a>
-            }
-
-
         </div>
       </div>
     </div>
-  </nav>
+</nav>
+
+ 

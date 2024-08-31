@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
+import { MytranslateService } from '../../../shared/services/Translation/mytranslate.service';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,TranslateModule,RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -13,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   islogin:boolean=false
 
-  constructor(private _auth:AuthService,private _Router:Router)
+  constructor(private _auth:AuthService,private _Router:Router,private _MytranslateService:MytranslateService)
   {
   }
 
@@ -40,4 +43,8 @@ export class NavbarComponent implements OnInit {
     
   }
 
+  Chnagelang(lang:string)
+  {
+    this._MytranslateService.Chnagelang(lang)
+  }
 }

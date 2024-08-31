@@ -1,12 +1,72 @@
 import { Component } from '@angular/core';
+import { ProuctsService } from '../../../shared/services/proucts.service';
+import { Product } from '../../../shared/interfaces/product';
+import { RouterLink } from '@angular/router';
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../../../shared/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink,CarouselModule,TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  sliderImages:string[]=["assets/images/slider-image-1.jpeg",
+    "assets/images/slider-image-2.jpeg",
+    "assets/images/slider-image-3.jpeg"
+  ]
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+
+  allproducts:Product[]=[]
+
+  constructor(private _ProuctsService:ProuctsService,private _CartService:CartService,private _ToastrService:ToastrService ){}
+
+  ngOnInit(): void {
+    if(typeof localStorage !== 'undefined')
+    {
+      localStorage.setItem("currentPage" , '/home')
+    }
+
+    this._ProuctsService.getallProducts().subscribe({
+      next:(res)=>{
+        this.allproducts=res.data
+      },
+      error:(err)=>{}
+    })
+  }
+
+  addtocart(pId:string)
+  {
+    this._CartService.AddproducttoCart(pId).subscribe({
+      next:(res)=>{
+
+        this._ToastrService.success(res.message)
+      },
+    })
+  }
+
+
+  
 
 }
