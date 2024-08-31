@@ -1,5 +1,5 @@
 {
-  "name": "assignment4",
+  "name": "EcommAssignment",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Assignment4": "node dist/assignment4/server/server.mjs"
+    "serve:ssr:EcommAssignment": "node dist/EcommAssignment/server/server.mjs"
   },
   "private": true,
   "dependencies": {

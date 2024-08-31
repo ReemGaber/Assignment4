@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Assignment4": {
+    "EcommAssignment": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -29,7 +29,7 @@
             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
             "node_modules/ngx-toastr/toastr.css",
-            "node_modules/ngx-spinner/animations/ball-scale-multiple.css",a
+            "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "src/styles.css"
             ],
             "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Assignment4:build:production"
+              "buildTarget": "EcommAssignment:build:production"
             },
             "development": {
-              "buildTarget": "Assignment4:build:development"
+              "buildTarget": "EcommAssignment:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Assignment4:build"
+            "buildTarget": "EcommAssignment:build"
           }
         },
         "test": {
